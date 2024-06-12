@@ -12,7 +12,7 @@ async function handleRequest(request) {
 
     console.log("Debug - url = " + url);
 
-	if (urlPath === "/information") {
+	if (urlPath === "/details") {
 
 		const jsonStructure = {
 			connection: {
@@ -39,11 +39,11 @@ async function handleRequest(request) {
 		  const valuesToReturn = JSON.stringify(jsonStructure, null, 2)
 		  console.log("Debug - valuesToReturn = " + valuesToReturn);
 
-		return new Response(valuesToReturn, {
+		return new Response(valuesToReturn + "\n", {
 			status: 200,
 			});
 	} else {
-		return new Response(clientIP, {
+		return new Response(clientIP + "\n", {
 			status: 200,
 			});
 	}

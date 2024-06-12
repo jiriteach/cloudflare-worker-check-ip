@@ -97,3 +97,25 @@ This Cloudflare Worker reads environment variables which store configuration inf
 
 * apiToken - the API token as provided by IPInfo.
 * apiReferer - the referer that the API token allows. Setup within the IPinfo dashboard. Default should be `cloudflare.worker.url`
+
+## Using Cloudflare to Determine IP Information
+
+`worker.backup.js` is a working example of using Cloudflare (instead of IPinfo) to detemine IP information.
+
+This uses `request.headers.get("CF-Connecting-IP")` to provide the clients IP and uses `request.cf` to provide IP information.
+
+IP information `request.cf` can provide - 
+```
+request.cf.asn
+request.cf.asOrganization
+request.cf.city
+request.cf.region
+request.cd.postcode
+request.cf.country
+request.cf.latitude
+request.cf.longitude
+request.cf.colo
+request.cf.timezone
+```
+
+`worker.backup.js` only supports Options1 and Options2.
