@@ -118,4 +118,4 @@ request.cf.colo
 request.cf.timezone
 ```
 
-`worker.backup.js` only supports Options1 and Options2.
+`worker.backup.js` only supports Option 1 and Option 2.
