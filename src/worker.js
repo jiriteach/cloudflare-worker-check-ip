@@ -68,6 +68,9 @@
 		  delete apiResponseToJson.loc;
 		  delete apiResponseToJson.city;
 		  delete apiResponseToJson.postal;
+
+		  // Fix for Spark New Zealand Name.
+		  apiResponseToJson.org = apiResponseToJson.org.replace("Zealand Trading Ltd.", "Zealand");
 		  
 		  const jsonResponse = JSON.stringify(apiResponseToJson, null, 2); 
 		  console.log("Debug - Response - " + jsonResponse);
