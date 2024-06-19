@@ -30,7 +30,7 @@
   
 		console.log("Debug - Entered Valid IP - " + enteredValidIp);
 		
-		if (urlPath === "/details" || enteredValidIp) {
+		if (urlPath === "/details" || urlPath === "/provider" || enteredValidIp) {
   
 		  let ipToCheck;
 		  if (enteredValidIp) {
@@ -69,15 +69,25 @@
 		  delete apiResponseToJson.city;
 		  delete apiResponseToJson.postal;
 
-		  // Fix for Spark New Zealand Name
-		  apiResponseToJson.org = apiResponseToJson.org.replace("Ltd.", "Ltd");
+		  // Fix for Spark New Zealand & One New Zealand & Cloudflare Names
+		  apiResponseToJson.org = apiResponseToJson.org.replace(" Trading Ltd.", "");
+		  apiResponseToJson.org = apiResponseToJson.org.replace(" Group Limited", "");
+		  apiResponseToJson.org = apiResponseToJson.org.replace(", Inc.", "");
 		  
 		  const jsonResponse = JSON.stringify(apiResponseToJson, null, 2); 
 		  console.log("Debug - Response - " + jsonResponse);
 
-		  return new Response(jsonResponse + "\n", {
-			status: 200
-		  });
+		  if (urlPath === "/details" || enteredValidIp) {
+			return new Response(jsonResponse + "\n", {
+				status: 200
+			  });
+		  } else if (urlPath === "/provider") {
+			return new Response(clientIP + "\n" + apiResponseToJson.org, {
+				status: 200
+			  });
+		  }
+
+		  
 		} else {
   
 		  if (enteredIp === false) {
