@@ -30,7 +30,8 @@ Example response -
    "queried":"12/06/2024, 5:47:05 pm via Cloudflare Worker"
 }
 ```
-Option 3 - `https://cloudflare.worker.url/210.xxx.xxx.xxx` returns the the clients IP information as determined by IPInfo.
+Option 3 - `https://cloudflare.worker.url/210.xxx.xxx.xxx` returns the the clients IP information as determined by IPInfo.  
+NOTE - IPinfo's API requires a token.
 
 Example response - 
 ```
@@ -44,6 +45,15 @@ Example response -
   "source": "IPinfo - IP provided",
   "queried": "12/06/2024, 5:49:43 pm via Cloudflare Worker"
 }
+```
+Option 4 - 
+`https://cloudflare.worker.url/provider` returns the the clients IP address and provider information as determined by IPInfo.  
+NOTE - IPinfo's API requires a token.
+
+Example response - 
+```
+210.xxx.xxx.xxx
+AS4771 Spark New Zealand Trading Ltd
 ```
 
 ## Using Curl
@@ -74,7 +84,6 @@ jxs@709 ~ % curl -L cloudflare.worker.url/details
 ```
 
 Example - 
-
 ```
 jxs@709 ~ % curl -L cloudflare.worker.url/210.xxx.xxx.xxx
 {
@@ -87,6 +96,13 @@ jxs@709 ~ % curl -L cloudflare.worker.url/210.xxx.xxx.xxx
   "source": "IPinfo - IP provided",
   "queried": "12/06/2024, 5:49:43 pm via Cloudflare Worker"
 }
+```
+Example - 
+
+```
+jxs@709 ~ % curl -L cloudflare.worker.url/provider
+210.xxx.xxx.xxx
+AS4771 Spark New Zealand Trading Ltd
 ```
 
 ## Required Environment Variables
