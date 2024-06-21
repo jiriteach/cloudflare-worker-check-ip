@@ -82,7 +82,7 @@
 				status: 200
 			  });
 		  } else if (urlPath === "/provider") {
-			return new Response(clientIP + "\n" + apiResponseToJson.org, {
+			return new Response(clientIP + "\n" + apiResponseToJson.org + "\n", {
 				status: 200
 			  });
 		  }
