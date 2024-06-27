@@ -69,10 +69,11 @@
 		  delete apiResponseToJson.city;
 		  delete apiResponseToJson.postal;
 
-		  // Fix for Spark New Zealand & One New Zealand & Cloudflare Names
+		  // Fix for Spark New Zealand & One New Zealand & Cloudflare & Voyager Names
 		  apiResponseToJson.org = apiResponseToJson.org.replace(" Trading Ltd.", "");
 		  apiResponseToJson.org = apiResponseToJson.org.replace(" Group Limited", "");
 		  apiResponseToJson.org = apiResponseToJson.org.replace(", Inc.", "");
+		  apiResponseToJson.org = apiResponseToJson.org.replace(" Ltd.", "");
 		  
 		  const jsonResponse = JSON.stringify(apiResponseToJson, null, 2); 
 		  console.log("Debug - Response - " + jsonResponse);
